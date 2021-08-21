@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class MovieController {
     @RequestMapping("{movieId}")
     public Movie getMovieInfo(@PathVariable("movieId") Long movieId){
-        return  new Movie(1L,"Into the wild");
+        return  new Movie(movieId,"Into the wild");
     }
 }

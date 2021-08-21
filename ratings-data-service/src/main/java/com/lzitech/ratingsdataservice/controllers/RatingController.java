@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class RatingController {
     @RequestMapping("{movieId}")
     public Rating getRating(@PathVariable("movieId") Long movieId){
-        return new Rating(1L,5);
+        return new Rating(movieId,5);
     }
 }
