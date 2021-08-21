@@ -4,6 +4,9 @@ public class Movie {
     private Long movieId;
     private String name;
 
+    public Movie() {
+
+    }
     public Movie(Long movieId, String name) {
         this.movieId = movieId;
         this.name = name;

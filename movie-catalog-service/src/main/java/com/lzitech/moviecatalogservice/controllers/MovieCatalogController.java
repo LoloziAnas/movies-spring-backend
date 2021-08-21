@@ -19,10 +19,10 @@ public class MovieCatalogController {
     private RestTemplate restTemplate;
     @RequestMapping("{userId}")
     public Collection<CatalogItem> getCatalog(@PathVariable("userId") Long userId){
-        UserRating ratings = restTemplate.getForObject("http://localhost:8083/ratings/users/"+userId, UserRating.class);
+        UserRating ratings = restTemplate.getForObject("http://ratings-data-service/ratings/users/"+userId, UserRating.class);
         //assert ratings != null;
         return  ratings.getUserRatings().stream().map(rating -> {
-            Movie movie = restTemplate.getForObject("http://localhost:8082/movies/"+rating.getMovieId(), Movie.class);
+            Movie movie = restTemplate.getForObject("http://movie-info-service/movies/"+rating.getMovieId(), Movie.class);
             assert movie != null;
             return new CatalogItem(movie.getName(), "desc 1", rating.getRating());
         }).collect(Collectors.toList());
